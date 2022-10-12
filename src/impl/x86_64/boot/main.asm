@@ -73,11 +73,11 @@ setup_page_table:
     mov eax, 0x200000 ; 2MiB
     mul ecx
     or eax, 0b10000011 ; present, writable, huge page
-    mov [page_table_l2 + ecx + 8], eax
+    mov [page_table_l2 + ecx * 8], eax
 
     inc ecx ; increment counter
     cmp ecx, 512 ; checks if the whole table is mapped
-    jne .loop ; if not continue
+    jne .loop ; if not, continue
 
     ret
 
