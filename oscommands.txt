@@ -1,0 +1,16 @@
+docker permission issues:
+    sudo usermod -aG docker $USER
+    newgrp docker
+
+docker build environment:
+    docker build buildenv -t docker_buildenv
+
+run docker environment:
+    docker run --rm -it -v "$(pwd)":/root/env docker_buildenv
+
+make file build (inside docker environment):
+    make build-x86_64
+    exit
+
+emulate OS with qemu:
+    qemu-system-x86_64 -cdrom dist/x86_64/kernel.iso
