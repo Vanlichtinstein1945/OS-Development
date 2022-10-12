@@ -1,5 +1,4 @@
 docker permission issues:
-    sudo usermod -aG docker $USER
     newgrp docker
 
 docker build environment:
